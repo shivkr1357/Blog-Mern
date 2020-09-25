@@ -1,0 +1,26 @@
+.main-footer {
+   color: blanchedalmond;
+   background-color: cadetblue;
+   position: relative;
+   padding: 5px;
+   bottom: 0;
+   width: 100%;
+   height: max-content;
+}
+
+.contents {
+   height: 10%;
+}
+.social-media-icons {
+   float: left;
+}
+.privacy-policy {
+   text-align: center;
+}
+.footer-links {
+   float: left;
+   text-decoration: none;
+   padding: 5;
+   width: max-content;
+   height: 10%;
+}

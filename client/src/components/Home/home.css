@@ -1,0 +1,21 @@
+.container {
+   height: 100%;
+   position: relative;
+   padding-left: 5;
+   padding-right: 5;
+   padding-bottom: 10;
+   overflow: hidden;
+}
+.main-content {
+   width: 100%;
+   height: 100%;
+   border: 1 px solid black;
+}
+.side-content {
+   text-align: end;
+}
+
+.card {
+   padding: 10px;
+   width: 18rem;
+}
