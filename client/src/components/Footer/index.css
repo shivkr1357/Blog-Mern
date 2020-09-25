@@ -20,7 +20,5 @@
 .footer-links {
    float: left;
    text-decoration: none;
-   padding: 5;
-   width: max-content;
-   height: 10%;
+   padding: 10px;
 }

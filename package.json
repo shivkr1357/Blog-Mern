@@ -23,7 +23,8 @@
       "jsonwebtoken": "^8.5.1",
       "mdbreact": "^4.27.0",
       "mongoose": "^5.10.5",
-      "nodemon": "^2.0.4"
+      "nodemon": "^2.0.4",
+      "react-share": "^4.3.0"
    },
    "devDependencies": {
       "morgan": "^1.10.0"

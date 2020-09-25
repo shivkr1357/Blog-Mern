@@ -4,6 +4,12 @@
    width: 100%;
 }
 .navbar-logo {
-   width: 20rem;
-   height: 20rem;
+   width: 4rem;
+   height: 4rem;
+   float: left;
+}
+.navbar-brand-name {
+   text-align: center;
+   justify-content: center;
+   margin-top: 5%;
 }

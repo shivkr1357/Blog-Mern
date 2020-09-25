@@ -1,5 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {
+   FacebookIcon,
+   FacebookShareButton,
+   LinkedinIcon,
+   LinkedinShareButton,
+   TwitterShareButton,
+   EmailIcon,
+   PinterestShareButton,
+   PinterestIcon,
+   TelegramShareButton,
+   TwitterIcon,
+   TelegramIcon,
+} from 'react-share';
 import './index.css';
 
 /**
@@ -16,7 +29,7 @@ const Footer = () => {
                   <div className='col-md-4'>
                      <ul className='unordered-list'>
                         <h4>New Item </h4>
-                        <Link to='' class='footer-links'>
+                        <Link to='' className='footer-links'>
                            <i className='fab fa-facebook'></i>
                         </Link>
                      </ul>
@@ -25,7 +38,7 @@ const Footer = () => {
                   <div className='col-md-4'>
                      <ul className='Other Stuff'>
                         <h4>Terms </h4>
-                        <Link to='' class='footer-links'>
+                        <Link to='' className='footer-links'>
                            <i className='fab fa-facebook'></i>
                         </Link>
                      </ul>
@@ -33,26 +46,34 @@ const Footer = () => {
 
                   <div className='col-md-4'>
                      <ul className='social-media-icons'>
-                        <h4>Social Media Icons</h4>
-                        <div class='footer-links'>
-                           <Link to='' class='footer-links'>
-                              <i className='fab fa-facebook'></i>
-                           </Link>
+                        <div className='footer-links'>
+                           <FacebookShareButton
+                              url={
+                                 'https://www.facebook.com/shivshankarkumar.pusa/'
+                              }
+                           >
+                              <FacebookIcon size={32} round={true} />
+                           </FacebookShareButton>
                         </div>
-                        <div class='footer-links'>
-                           <Link to='' class='footer-links'>
-                              <i className='fab fa-facebook'></i>
-                           </Link>
+                        <div className='footer-links'>
+                           <TelegramShareButton>
+                              <TelegramIcon size={32} round={true} />
+                           </TelegramShareButton>
                         </div>
-                        <div class='footer-links'>
-                           <Link to='' class='footer-links'>
-                              <i className='fab fa-facebook'></i>
-                           </Link>
+                        <div className='footer-links'>
+                           <LinkedinShareButton>
+                              <LinkedinIcon size={32} round={true} />
+                           </LinkedinShareButton>
                         </div>
-                        <div class='footer-links'>
-                           <Link to=''>
-                              <i className='fab fa-facebook'></i>
-                           </Link>
+                        <div className='footer-links'>
+                           <TwitterShareButton>
+                              <TwitterIcon size={32} round={true} />
+                           </TwitterShareButton>
+                        </div>
+                        <div className='footer-links'>
+                           <PinterestShareButton>
+                              <PinterestIcon size={32} round={true} />
+                           </PinterestShareButton>
                         </div>
                      </ul>
                   </div>
