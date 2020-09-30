@@ -20,5 +20,20 @@
 .footer-links {
    float: left;
    text-decoration: none;
-   padding: 10px;
+   padding: 5px;
+   margin-top: 5px;
+}
+.privacy-policy-link {
+   color: #fff;
+}
+.privacy-policy-link:hover {
+   color: rebeccapurple;
+   text-decoration: none;
+}
+.terms-condition-link {
+   color: #fff;
+}
+.terms-condition-link:hover {
+   color: rebeccapurple;
+   text-decoration: none;
 }
