@@ -11,6 +11,7 @@ import About from './components/About/About';
 import Services from './components/Services/Services';
 import AdminRoutes from './components/Admin/AdminRoutes/AdminRoutes';
 import AdminDashboard from './components/Admin/AdminDashboard/Admin';
+import PostDescription from './components/Posts/postdescription';
 
 function App() {
    return (
@@ -21,6 +22,11 @@ function App() {
                <main>
                   <Switch>
                      <Route exact path='/' component={Home} />
+                     <Route
+                        exact
+                        path='/posts/:id'
+                        component={PostDescription}
+                     />
                      <Route exact path='/signup' component={Signup} />
                      <Route exact path='/login' component={Signin} />
                      <Route exact path='/services' component={Services} />

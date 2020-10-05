@@ -1,4 +1,5 @@
 const Posts = require('../Models/posts');
+const mongoose = require('mongoose');
 
 exports.readAll = async (req, res) => {
    try {
@@ -6,6 +7,20 @@ exports.readAll = async (req, res) => {
 
       res.status(200).json({
          posts,
+      });
+   } catch (err) {
+      console.log('Post Read all  error', err);
+      return res.status(500).json({
+         errorMessage: 'Please try again later',
+      });
+   }
+};
+
+exports.readOne = async (req, res) => {
+   try {
+      const post = await Posts.findById(req.params.id);
+      res.status(200).json({
+         post,
       });
    } catch (err) {
       console.log('Post Read all  error', err);

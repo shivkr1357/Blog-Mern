@@ -1,31 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import './home.css';
-import { getPosts } from '../../apis/posts';
-import Posts from '../Posts/posts';
+import { getOnePost } from '../../apis/posts';
+import './index.css';
 
 /**
  * @author
- * @function Home
+ * @function PostDescription
  **/
 
-const Home = () => {
-   const [posts, setPosts] = useState(null);
-
+const PostDescription = (props) => {
+   const [post, setPost] = useState({
+      author: '',
+      title: '',
+      tags: '',
+      html: '',
+      createdAt: '',
+      updatedAt: '',
+   });
+   const { author, html, tags, title, createdAt, updatedAt } = post;
    useEffect(() => {
-      loadPosts();
+      loadPost();
+      window.scrollTo(0, 0);
    }, []);
 
-   const loadPosts = async () => {
-      await getPosts()
+   const loadPost = async () => {
+      getOnePost(props.match.params.id)
          .then((response) => {
-            setPosts(response.data.posts);
+            setPost(response.data.post);
+            // const { author, html, tags, title } = response.data.post;
+            console.log(response.data.post);
+            // author = response.data.post.html;
+            // console.log(author, html, tags, title);
          })
          .catch((err) => {
-            console.log('Get Post Error', err);
+            console.log('Error = ', err);
          });
    };
-
    return (
       <section>
          <div className='container'>
@@ -45,12 +55,11 @@ const Home = () => {
                      </div>
                   </div>
                </div>
-               <div className='col-md-9 main-content border'>
+               <div className='col-md-9 main-content '>
                   <div className='card-container'>
-                     {posts &&
-                        posts.map((post) => (
-                           <Posts post={post} key={post._id} />
-                        ))}
+                     <div className='post-description'>
+                        <h1 className='heading'>{post.title}</h1>
+                     </div>
                   </div>
                </div>
             </div>
@@ -59,4 +68,4 @@ const Home = () => {
    );
 };
 
-export default Home;
+export default PostDescription;

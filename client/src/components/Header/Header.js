@@ -1,85 +1,112 @@
 import React, { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './header.css';
-import { isAuthenticated } from '../Helpers/auth';
+import { isAuthenticated, logout } from '../Helpers/auth';
 
-/**
- * @author
- * @function Header
- **/
+const Header = ({ history }) => {
+   const handleLogout = (evt) => {
+      logout(() => {
+         history.push('/signIn');
+      });
+   };
 
-const Header = () => {
-   return (
-      <header>
-         <nav className='navbar navbar-expand-lg navbar-dark bg-dark static-top'>
-            <div className='container'>
+   const showNavigation = () => (
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+         <button
+            className='navbar-toggler'
+            type='button'
+            data-toggle='collapse'
+            data-target='#navbarTogglerDemo01'
+            aria-controls='navbarTogglerDemo01'
+            aria-expanded='false'
+            aria-label='Toggle navigation'
+         >
+            <span className='navbar-toggler-icon'></span>
+         </button>
+         <div className='collapse navbar-collapse' id='navbarTogglerDemo01'>
+            <Link to='/' className='navbar-brand'>
+               Shiv Shankar Blog
+            </Link>
+            <form className='form-inline my-2 my-lg-0'>
+               <input
+                  className='form-control mr-sm-2'
+                  type='search'
+                  placeholder='Search'
+                  aria-label='Search'
+               />
+               <button
+                  className='btn btn-outline-success my-2 my-sm-0'
+                  type='submit'
+               >
+                  Search
+               </button>
+            </form>
+            <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
                {!isAuthenticated() && (
                   <Fragment>
-                     <Link className='navbar-brand' to='/about'>
-                        <img
-                           src={'/logo.jpeg'}
-                           className='navbar-logo'
-                           alt='Brand Logo'
-                        />
-                        <h3 className='navbar-brand-name'>
-                           Shiv Shankar Prasad
-                        </h3>
-                     </Link>
-                     <button
-                        className='navbar-toggler'
-                        type='button'
-                        data-toggle='collapse'
-                        data-target='#navbarResponsive'
-                        aria-controls='navbarResponsive'
-                        aria-expanded='false'
-                        aria-label='Toggle navigation'
-                     >
-                        <span className='navbar-toggler-icon'></span>
-                     </button>
-                     <div
-                        className='collapse navbar-collapse'
-                        id='navbarResponsive'
-                     >
-                        <ul className='navbar-nav ml-auto'>
-                           <li className='nav-item active'>
-                              <Link className='nav-link' to='/'>
-                                 Home
-                                 <span className='sr-only'>(current)</span>
-                              </Link>
-                           </li>
-                           <li className='nav-item'>
-                              <Link className='nav-link' to='/about'>
-                                 About
-                              </Link>
-                           </li>
-                           <li className='nav-item'>
-                              <Link className='nav-link' to='/services'>
-                                 Services
-                              </Link>
-                           </li>
-                           <li className='nav-item'>
-                              <Link className='nav-link' to='/login'>
-                                 Login
-                              </Link>
-                           </li>
-                           <li className='nav-item'>
-                              <Link className='nav-link' to='/signup'>
-                                 Register
-                              </Link>
-                           </li>
-                        </ul>
-                     </div>
+                     <li className='nav-item'>
+                        <Link to='/' className='nav-link'>
+                           <i className='fas fa-home'></i> Home
+                        </Link>
+                     </li>
+                     <li className='nav-item'>
+                        <Link to='/signup' className='nav-link'>
+                           <i className='fas fa-edit'></i> SignUp
+                        </Link>
+                     </li>
+                     <li className='nav-item'>
+                        <Link to='/login' className='nav-link'>
+                           <i className='fas fa-sign-in-alt'></i> SignIn
+                        </Link>
+                     </li>
+                     <li className='nav-item'>
+                        <Link className='nav-link' to='/about'>
+                           About
+                        </Link>
+                     </li>
+                     <li className='nav-item'>
+                        <Link className='nav-link' to='/services'>
+                           Services
+                        </Link>
+                     </li>
                   </Fragment>
                )}
-               {!isAuthenticated() && isAuthenticated().role === 1 && (
+
+               {isAuthenticated() && isAuthenticated().role === 0 && (
                   <Fragment>
-                     <div></div>
+                     <li className='nav-item'>
+                        <Link to='/user/dashboard' className='nav-link'>
+                           <i className='fas fa-home'></i> Dashboard
+                        </Link>
+                     </li>
                   </Fragment>
                )}
-            </div>
-         </nav>
-      </header>
+
+               {isAuthenticated() && isAuthenticated().role === 1 && (
+                  <Fragment>
+                     <li className='nav-item'>
+                        <Link to='/admin/dashboard' className='nav-link'>
+                           <i className='fas fa-home'></i> Dashboard
+                        </Link>
+                     </li>
+                  </Fragment>
+               )}
+
+               {isAuthenticated() && (
+                  <Fragment>
+                     <li className='nav-item'>
+                        <button className='btn btn-info' onClick={handleLogout}>
+                           <i className='fas fa-sign-out-alt'></i> Logout
+                        </button>
+                     </li>
+                  </Fragment>
+               )}
+            </ul>
+         </div>
+      </nav>
    );
+
+   return <header id='header'>{showNavigation()}</header>;
 };
 
 export default withRouter(Header);

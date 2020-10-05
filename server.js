@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const connectDb = require('./database/db');
 const postRoutes = require('./routes/posts');
+const authRoutes = require('./routes/auth');
 const path = require('path');
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 connectDb();
 
 app.use('/api/posts', postRoutes);
+app.use('/api/auth', authRoutes);
 
 //serve Static files if in production
 
