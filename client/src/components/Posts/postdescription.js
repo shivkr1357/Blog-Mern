@@ -40,26 +40,29 @@ const PostDescription = (props) => {
       <section>
          <div className='container'>
             <div className='row'>
-               <div className='col-md-3 border side-content'>
-                  <div className='sidebar-content-single'>
-                     <div className='description-div'>
-                        <ul>
-                           <li>
-                              {/* <div className='fas fa-home'></div> */}
-                              <Link to='#' className='Link'>
-                                 <i className='far fa-hand-point-right'></i>{' '}
-                                 Find the Link using tags
-                              </Link>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div className='col-md-9 main-content '>
-                  <div className='card-container'>
+               <div className='col-md-9'>
+                  <div className='article-container'>
                      <div className='post-description'>
                         <h1 className='heading'>{post.title}</h1>
                      </div>
+                     <div className='main-content'>{post.html}</div>
+                  </div>
+               </div>
+               <div className='col-md-3'>
+                  <div className='media'>
+                     <img
+                        className='mr-3'
+                        src='...'
+                        alt='generic-image-content'
+                     />
+                  </div>
+                  <div className='media-body'>
+                     <h5 className='mt-0'>Post 1</h5>
+                     Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                     metus scelerisque ante sollicitudin. Cras purus odio,
+                     vestibulum in vulputate at, tempus viverra turpis. Fusce
+                     condimentum nunc ac nisi vulputate fringilla. Donec lacinia
+                     congue felis in faucibus.
                   </div>
                </div>
             </div>

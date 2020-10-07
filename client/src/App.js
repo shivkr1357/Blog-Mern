@@ -17,36 +17,28 @@ function App() {
    return (
       <BrowserRouter>
          <Header />
-         <div className='page-container'>
-            <div className='content-wrap'>
-               <main>
-                  <Switch>
-                     <Route exact path='/' component={Home} />
-                     <Route
-                        exact
-                        path='/posts/:id'
-                        component={PostDescription}
-                     />
-                     <Route exact path='/signup' component={Signup} />
-                     <Route exact path='/login' component={Signin} />
-                     <Route exact path='/services' component={Services} />
-                     <Route exact path='/about' component={About} />
-                     {/* 
+         <main id='wrapper'>
+            <Switch>
+               <Route exact path='/' component={Home} />
+               <Route exact path='/posts/:id' component={PostDescription} />
+               <Route exact path='/signup' component={Signup} />
+               <Route exact path='/login' component={Signin} />
+               <Route exact path='/services' component={Services} />
+               <Route exact path='/about' component={About} />
+               {/* 
                      {/* <UserRoutes
                         exact
                         path='/user/dashboard'
                         component={UserDashboard}
                      /> */}
-                     <AdminRoutes
-                        exact
-                        path='/admin/dashboard'
-                        component={AdminDashboard}
-                     />
-                     <Route component={NotFound} />
-                  </Switch>
-               </main>
-            </div>
-         </div>
+               <AdminRoutes
+                  exact
+                  path='/admin/dashboard'
+                  component={AdminDashboard}
+               />
+               <Route component={NotFound} />
+            </Switch>
+         </main>
          <Footer />
       </BrowserRouter>
    );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './index.css';
 
 /**
  * @author
@@ -35,18 +36,26 @@ const Posts = (props) => {
    };
 
    return (
-      <div className='card' key={post._id}>
-         <img className='card-img-top' src={'/logo.jpeg'} alt='Card cap' />
-         <div className='card-body'>
-            <h5 className='card-title'> {post.title} </h5>
-            <small>{post.tags} </small>
-            <p className='card-text'>{post.html}</p>
+      <article className='article' key={post._id}>
+         <div className='article-heading'>
+            <i>
+               <b>
+                  <h5 className='article-title'> {post.title} </h5>
+               </b>
+            </i>
+         </div>
+         <div className='article-information'>
             <span>{renderDate(post.createdAt)}</span>
+            <small>{post.tags} </small>
             <Link to={path} params={{ id: post._id }}>
-               {' ' + post.title}
+               {' ' + 'Read More'}
             </Link>
          </div>
-      </div>
+         <img className='article-img-top' src={'/logo.jpeg'} alt='Card cap' />
+         <div className='article-body'>
+            <p className='article-text'>{post.html}</p>
+         </div>
+      </article>
    );
 };
 

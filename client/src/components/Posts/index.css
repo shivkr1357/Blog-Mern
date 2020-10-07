@@ -1,9 +1,8 @@
-.show-post {
-   min-height: 100vh;
+.article {
    width: 100%;
-   overflow: hidden;
-}
-.heading {
-   text-align: center;
+   padding: 10px;
    display: block;
+}
+.article-heading {
+   font-size: 1.6em;
 }

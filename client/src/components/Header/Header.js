@@ -11,7 +11,7 @@ const Header = ({ history }) => {
    };
 
    const showNavigation = () => (
-      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
          <button
             className='navbar-toggler'
             type='button'
@@ -23,11 +23,12 @@ const Header = ({ history }) => {
          >
             <span className='navbar-toggler-icon'></span>
          </button>
+
+         <Link to='/' className='navbar-brand'>
+            Shiv Shankar Blog
+         </Link>
          <div className='collapse navbar-collapse' id='navbarTogglerDemo01'>
-            <Link to='/' className='navbar-brand'>
-               Shiv Shankar Blog
-            </Link>
-            <form className='form-inline my-2 my-lg-0'>
+            {/* <form className='form-inline my-2 my-lg-0'>
                <input
                   className='form-control mr-sm-2'
                   type='search'
@@ -40,7 +41,7 @@ const Header = ({ history }) => {
                >
                   Search
                </button>
-            </form>
+            </form> */}
             <ul className='navbar-nav ml-auto mt-2 mt-lg-0'>
                {!isAuthenticated() && (
                   <Fragment>
