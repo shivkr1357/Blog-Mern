@@ -29,12 +29,8 @@ const Footer = () => {
                   <div className='container'>
                      <div className='row contents'>
                         <div className='col-md-6'>
-                           <ul className='unordered-list'>
-                              <h4>New Item </h4>
-                              <Link to='' className='footer-links'>
-                                 <i className='fab fa-facebook'></i>
-                              </Link>
-                           </ul>
+                           <p>Want to make a website for yourself ??</p>
+                           <h6>Contact Us</h6>
                         </div>
 
                         <div className='col-md-6'>

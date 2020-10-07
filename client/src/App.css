@@ -30,31 +30,3 @@ body {
 .main-footer {
    width: 100%;
 }
-@media (max-device-width: 576px) {
-   .container {
-      max-width: 100%;
-      padding: 10px;
-      margin: auto;
-   }
-   div.navbar-brand {
-      display: block;
-   }
-}
-@media screen and (max-width: 768px) {
-   .navbar {
-      height: 10%;
-   }
-   .navbar-brand {
-      display: inline-block;
-      padding-top: 0.3125rem;
-      padding-bottom: 0.3125rem;
-      margin-right: 0.5rem;
-      font-size: 1.25rem;
-      line-height: inherit;
-      white-space: nowrap;
-   }
-   .main-footer {
-      float: left;
-      flex-direction: column;
-   }
-}

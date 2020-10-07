@@ -1,0 +1,22 @@
+footer {
+   text-align: center;
+   background-color: lightblue;
+}
+a {
+   color: #000;
+   text-decoration: none;
+}
+
+a:hover {
+   color: #00a0c6;
+   text-decoration: none;
+   cursor: pointer;
+}
+.contents {
+   justify-content: space-between;
+}
+.footer-links {
+   float: left;
+   padding: 5px;
+   text-align: center;
+}

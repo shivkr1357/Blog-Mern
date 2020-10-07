@@ -30,7 +30,10 @@ const Home = () => {
       <section>
          <div className='container'>
             <div className='row'>
-               <div className='col-md-9'>
+               <div className='col-md-9 main-contents'>
+                  {/* <div className='top-image'>
+                     <img src={'logo.jpeg'} />
+                  </div> */}
                   <div className='article-container'>
                      {posts &&
                         posts.map((post) => (

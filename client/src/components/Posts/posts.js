@@ -45,8 +45,8 @@ const Posts = (props) => {
             </i>
          </div>
          <div className='article-information'>
-            <span>{renderDate(post.createdAt)}</span>
-            <small>{post.tags} </small>
+            <span>{' ' + renderDate(post.createdAt)}</span>
+            <small>{' ' + post.tags} </small>
             <Link to={path} params={{ id: post._id }}>
                {' ' + 'Read More'}
             </Link>

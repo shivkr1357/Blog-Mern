@@ -1,4 +1,9 @@
-.article-container {
+.article-top-image {
    width: 100%;
    padding: 10px;
+   object-fit: cover;
+   float: left;
+}
+.main-contents {
+   object-fit: cover;
 }
