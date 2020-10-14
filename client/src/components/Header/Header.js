@@ -6,7 +6,7 @@ import { isAuthenticated, logout } from '../Helpers/auth';
 const Header = ({ history }) => {
    const handleLogout = (evt) => {
       logout(() => {
-         history.push('/signIn');
+         history.push('/login');
       });
    };
 
@@ -23,10 +23,11 @@ const Header = ({ history }) => {
          >
             <span className='navbar-toggler-icon'></span>
          </button>
-
-         <Link to='/' className='navbar-brand'>
-            Shiv Shankar Blog
-         </Link>
+         <div className='brand'>
+            <Link to='/' className='navbar-brand'>
+               Shiv Shankar Blog
+            </Link>
+         </div>
          <div className='collapse navbar-collapse' id='navbarTogglerDemo01'>
             {/* <form className='form-inline my-2 my-lg-0'>
                <input
@@ -50,7 +51,7 @@ const Header = ({ history }) => {
                            <i className='fas fa-home'></i> Home
                         </Link>
                      </li>
-                     <li className='nav-item'>
+                     {/* <li className='nav-item'>
                         <Link to='/signup' className='nav-link'>
                            <i className='fas fa-edit'></i> SignUp
                         </Link>
@@ -59,15 +60,15 @@ const Header = ({ history }) => {
                         <Link to='/login' className='nav-link'>
                            <i className='fas fa-sign-in-alt'></i> SignIn
                         </Link>
+                     </li> */}
+                     <li className='nav-item'>
+                        <Link className='nav-link' to='/posts'>
+                           Posts
+                        </Link>
                      </li>
                      <li className='nav-item'>
                         <Link className='nav-link' to='/about'>
                            About
-                        </Link>
-                     </li>
-                     <li className='nav-item'>
-                        <Link className='nav-link' to='/services'>
-                           Services
                         </Link>
                      </li>
                   </Fragment>
@@ -78,6 +79,11 @@ const Header = ({ history }) => {
                      <li className='nav-item'>
                         <Link to='/user/dashboard' className='nav-link'>
                            <i className='fas fa-home'></i> Dashboard
+                        </Link>
+                     </li>
+                     <li className='nav-item'>
+                        <Link className='nav-link' to='/services'>
+                           Services
                         </Link>
                      </li>
                   </Fragment>

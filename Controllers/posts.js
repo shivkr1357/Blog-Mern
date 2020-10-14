@@ -31,12 +31,11 @@ exports.readOne = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-   const { title, tag, html, author } = req.body;
-
+   const { title, tags, html, author } = req.body;
    try {
       let newPost = new Posts();
       newPost.title = title;
-      newPost.tags = tag;
+      newPost.tags = tags;
       newPost.html = html;
       newPost.author = author;
 

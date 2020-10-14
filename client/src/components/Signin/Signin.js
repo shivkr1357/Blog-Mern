@@ -24,8 +24,8 @@ const Signin = (props) => {
    }, [history]);
 
    const [formData, setFormData] = useState({
-      email: 'kumar@gmail.com',
-      password: '1234567',
+      email: '',
+      password: '',
       errorMsg: false,
       loading: false,
    });

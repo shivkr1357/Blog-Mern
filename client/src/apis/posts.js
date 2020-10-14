@@ -8,6 +8,16 @@ export const getPosts = async () => {
 
 export const getOnePost = async (req, res) => {
    const response = await axios.get('/api/posts/' + req);
-   console.log(req);
+   return response;
+};
+
+export const createPost = async (data) => {
+   const config = {
+      headers: {
+         'Content-Type': 'application/json',
+      },
+   };
+
+   const response = await axios.post('/api/posts/create', data, config);
    return response;
 };

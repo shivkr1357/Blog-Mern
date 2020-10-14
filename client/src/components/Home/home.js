@@ -34,11 +34,13 @@ const Home = () => {
                   {/* <div className='top-image'>
                      <img src={'logo.jpeg'} />
                   </div> */}
-                  <div className='article-container'>
-                     {posts &&
-                        posts.map((post) => (
-                           <Posts post={post} key={post._id} />
-                        ))}
+                  <div className='article'>
+                     <div className='article-container'>
+                        {posts &&
+                           posts.map((post) => (
+                              <Posts post={post} key={post._id} />
+                           ))}
+                     </div>
                   </div>
                </div>
                <div className='col-md-3'>

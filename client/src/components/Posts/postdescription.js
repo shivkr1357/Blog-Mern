@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { getOnePost } from '../../apis/posts';
+import { getOnePost, getPosts } from '../../apis/posts';
+import Posts from './posts';
 import './index.css';
 
 /**
@@ -9,6 +10,7 @@ import './index.css';
  **/
 
 const PostDescription = (props) => {
+   const [posts, setPosts] = useState(null);
    const [post, setPost] = useState({
       author: '',
       title: '',
@@ -18,10 +20,27 @@ const PostDescription = (props) => {
       updatedAt: '',
    });
    const { author, html, tags, title, createdAt, updatedAt } = post;
+   const path = {
+      pathname: '/posts/' + post._id,
+   };
    useEffect(() => {
       loadPost();
       window.scrollTo(0, 0);
    }, []);
+
+   useEffect(() => {
+      loadPosts();
+   }, []);
+
+   const loadPosts = async () => {
+      await getPosts()
+         .then((response) => {
+            setPosts(response.data.posts);
+         })
+         .catch((err) => {
+            console.log('Get Post Error', err);
+         });
+   };
 
    const loadPost = async () => {
       getOnePost(props.match.params.id)
@@ -57,12 +76,10 @@ const PostDescription = (props) => {
                      />
                   </div>
                   <div className='media-body'>
-                     <h5 className='mt-0'>Post 1</h5>
-                     Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                     metus scelerisque ante sollicitudin. Cras purus odio,
-                     vestibulum in vulputate at, tempus viverra turpis. Fusce
-                     condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-                     congue felis in faucibus.
+                     {posts &&
+                        posts.map((post) => (
+                           <Posts post={post} key={post._id} />
+                        ))}
                   </div>
                </div>
             </div>

@@ -1,15 +1,20 @@
 /* Imports  */
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;0,900;1,700;1,900&display=swap');
+
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
 
+#wrapper {
+   min-height: 80vh;
+}
+
 body {
    font-family: 'Lato', sans-serif;
-   overflow-x: hidden;
+   background-color: khaki;
 }
 
 .container {
@@ -18,15 +23,50 @@ body {
 }
 
 .navbar {
-   height: 10%;
+   height: 12%;
    width: 100%;
    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
-.navbar .brand {
-   font-size: 1.5em;
+.navbar li {
+   text-transform: uppercase;
+   text-decoration: none;
+   color: #ffffff;
+   padding: 10px;
+   display: block;
+}
+
+.navbar li:hover {
+   border: honeydew;
+   box-shadow: 0px 4px 4px rgba(255, 249, 249, 0.4);
+   transform: scale(1.1);
+}
+
+.brand {
+   /* text-transform: uppercase; */
+   text-decoration: none;
+   color: #ffffff;
+   padding: 5px;
+   display: block;
+}
+
+.brand a:hover {
+   /* border: honeydew;
+   box-shadow: 0px 4px 4px rgba(255, 249, 249, 0.4); */
+   transform: scale(1.1);
+}
+
+.navbar {
+   font-size: 1.2em;
+}
+
+.contents {
+   justify-content: space-between;
 }
 
 .main-footer {
-   width: 100%;
+   justify-content: space-between;
+   padding-left: 5px;
+   text-align: center;
+   width: 90%;
 }

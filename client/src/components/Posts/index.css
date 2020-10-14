@@ -1,9 +1,12 @@
-.article {
+.articles {
    width: 100%;
+   background-color: white;
+   border-radius: 10px;
+   height: fit-content;
    padding: 10px;
-   display: block;
-   float: left;
+   margin-bottom: 20px;
 }
+
 .article-heading {
-   font-size: 1.6em;
+   font-size: 1.3em;
 }

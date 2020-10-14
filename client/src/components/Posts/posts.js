@@ -36,7 +36,7 @@ const Posts = (props) => {
    };
 
    return (
-      <article className='article' key={post._id}>
+      <article className='articles' key={post._id}>
          <div className='article-heading'>
             <i>
                <b>
@@ -45,13 +45,13 @@ const Posts = (props) => {
             </i>
          </div>
          <div className='article-information'>
-            <span>{' ' + renderDate(post.createdAt)}</span>
+            <small>{' ' + renderDate(post.createdAt)}</small>
             <small>{' ' + post.tags} </small>
             <Link to={path} params={{ id: post._id }}>
-               {' ' + 'Read More'}
+               {'  Read More'}
             </Link>
          </div>
-         <img className='article-img-top' src={'/logo.jpeg'} alt='Card cap' />
+         {/* <img className='article-img-top' src={'/logo.jpeg'} alt='Card cap' /> */}
          <div className='article-body'>
             <p className='article-text'>{post.html}</p>
          </div>

@@ -5,7 +5,7 @@ export const showLoading = () => (
       <div className='spinner-border text-primary' role='status'>
          <span className='sr-only'>Loading...</span>
       </div>
-      <div className='spinner-border text-secondary' role='status'>
+      {/* <div className='spinner-border text-secondary' role='status'>
          <span className='sr-only'>Loading...</span>
       </div>
       <div className='spinner-border text-success' role='status'>
@@ -22,6 +22,6 @@ export const showLoading = () => (
       </div>
       <div className='spinner-border text-dark' role='status'>
          <span className='sr-only'>Loading...</span>
-      </div>
+      </div> */}
    </Fragment>
 );

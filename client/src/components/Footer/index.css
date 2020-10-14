@@ -12,9 +12,9 @@ a:hover {
    text-decoration: none;
    cursor: pointer;
 }
-.contents {
+/* .contents {
    justify-content: space-between;
-}
+} */
 .footer-links {
    float: left;
    padding: 5px;

@@ -11,3 +11,10 @@ export const showSuccessMsg = (msg) => (
       {msg}
    </div>
 );
+
+export const message = {
+   titleRequired: 'Please enter title',
+   tagsRequired: 'Please Enter at least one tag',
+   authorRequired: 'Please Enter author name',
+   htmlRequired: 'Please Enter Post Description',
+};
