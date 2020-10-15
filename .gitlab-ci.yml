@@ -1,22 +1,174 @@
-image: node:10.16.3 # change to match your project's node version
+image: node:10.19.0
 
-cache:
-   paths:
+stages:
+  - install_dependencies
+  - build
+  - test
+  - deploy
+
+install_dependencies:
+  stage: install_dependencies
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
       - node_modules/
+  script:
+    - yarn install
+  only:
+    changes:
+      - yarn.lock
 
-before_script:
-   - rm -rf build
-   - CI=false npm install
+#continuous integration
+unit-test:
+  stage: test
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  script:
+    yarn test
 
-pages:
-   stage: deploy
-   script:
-      - CI=false npm run build
-      - rm -rf public
-      - cp build/index.html build/404.html
-      - mv build public
-   artifacts:
-      paths:
-         - public
-   only:
-      - master
+# Only runs in case of continuous delivery
+integration-test:
+  stage: test
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  services:
+  - mongo
+  script:
+    - echo $MONGO_URI_TESTS
+    - yarn test:integration
+  only:
+  - merge_requests
+  - prod
+
+
+
+lint:
+  stage: test
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  script: yarn lint
+
+
+e2e-test:
+  stage: test
+  services:
+  - mongo
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - build/
+    policy: pull
+  script:
+    - node node_modules/node-static/bin/cli.js build --port 5000 --spa &
+    - yarn start-prod-server
+    - node node_modules/pm2/bin/pm2 logs &
+    - sleep 3
+    - yarn run test:e2e
+  dependencies:
+    - Build-client
+
+  only:
+    refs:
+      - tags
+  except:
+    - /^((?!release).)*$/
+
+
+Build-client:
+  stage: build
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+      - build/
+    policy: pull-push
+
+  script: yarn build-client
+  artifacts:
+    paths:
+    - build
+
+
+
+
+Build-docs:
+  stage: build
+  script: yarn docs
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  only:
+  - merge_requests
+  - prod
+
+Build-storybook:
+  stage: build
+  script: yarn build-storybook
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  only:
+  - merge_requests
+  - prod
+
+
+
+deploy-backend:
+  stage: deploy
+  image: ruby:latest
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+  dependencies:
+    - e2e-test
+  when: manual
+  allow_failure: false
+  only:
+    refs:
+      - tags
+  except:
+    - /^((?!release).)*$/
+
+
+
+deploy-frontend:
+  stage: deploy
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - node_modules/
+    policy: pull
+  variables:
+    REACT_APP_API_HOST: $REACT_APP_API_HOST_PROD
+  script:
+    - yarn build-client
+    - node ./node_modules/.bin/surge -p build/ --domain $SURGE_DOMAIN
+  when: manual
+  allow_failure: false
+  dependencies:
+    - e2e-test
+  only:
+    refs:
+      - tags
+  except:
+    - /^((?!release).)*$/
