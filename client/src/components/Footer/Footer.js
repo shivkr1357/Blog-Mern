@@ -13,6 +13,7 @@ import {
    TelegramIcon,
 } from 'react-share';
 import './index.css';
+import {Helmet} from 'react-helmet';
 
 /**
  * @author
@@ -27,8 +28,8 @@ const Footer = () => {
                <div className='container'>
                   <div className='row contents'>
                      <div>
-                        <p>
-                           Want to make a custom website for yourself ??
+                        <p className="contact-us-link">
+                           Want a website??
                            <Link to='/contact-us'>Contact Us</Link>
                         </p>
                      </div>
@@ -65,24 +66,23 @@ const Footer = () => {
                         </div>
                      </ul>
                      <div className='nothing'>
-                        <p> No content </p>
+                     <FacebookShareButton
+                              url={
+                                 'https://www.facebook.com/itsindianguy/'
+                              }
+                           >
+                              <img className="facebook-page" src="/images/facebook-page-image.jpg" />
+                              <i>Share on facebook page</i>
+                           </FacebookShareButton>
                      </div>
+                     
                   </div>
                   <div className='row'>
                      <p className='col-sm privacy-policy'>
                         {' '}
-                        &copy; {new Date().getFullYear()} This Corporation | All
-                        Rights reserved |{' '}
-                        <Link
-                           to='/terms-of-condition'
-                           className='terms-condition-link'
-                        >
-                           Terms of Services
-                        </Link>{' '}
-                        |{' '}
-                        <Link to='/privacy' className='privacy-policy-link'>
-                           Privacy Policy
-                        </Link>
+                        &copy; {new Date().getFullYear()} itsindianguy | All
+                        Rights reserved 
+                        
                      </p>
                   </div>
                </div>

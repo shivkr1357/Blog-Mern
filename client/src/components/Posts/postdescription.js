@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getOnePost, getPosts } from '../../apis/posts';
 import Posts from './posts';
 import './index.css';
-
+import Comments from '../comments/comments';
 /**
  * @author
  * @function PostDescription
@@ -59,27 +59,33 @@ const PostDescription = (props) => {
       <section>
          <div className='container'>
             <div className='row'>
-               <div className='col-md-9'>
+               <div className='col-md-9 content-main'>
                   <div className='article-container'>
                      <div className='post-description'>
                         <h1 className='heading'>{post.title}</h1>
                      </div>
                      <div className='main-content'>{post.html}</div>
                   </div>
+                  <div className="add-comments">
+                      <div className="show-comment-form">
+                           
+                              <Comments />
+                           
+                      </div>
+                  </div>
                </div>
-               <div className='col-md-3'>
+               <div className='col-md-3 side-content'>
                   <div className='media'>
                      <img
-                        className='mr-3'
-                        src='...'
+                        className='mr-3 profile-pic'
+                        src='/images/profile-pic.jpg'
                         alt='generic-image-content'
                      />
                   </div>
                   <div className='media-body'>
-                     {posts &&
-                        posts.map((post) => (
-                           <Posts post={post} key={post._id} />
-                        ))}
+                     <h5 className='mt-0'>About the Developer</h5>
+                     Shiv Shankar Prasad <br />
+                     MERN Stack enthusiast
                   </div>
                </div>
             </div>

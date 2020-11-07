@@ -43,21 +43,18 @@ const Home = () => {
                      </div>
                   </div>
                </div>
-               <div className='col-md-3'>
+               <div className='col-md-3 side-content'>
                   <div className='media'>
                      <img
-                        className='mr-3'
-                        src='...'
+                        className='mr-3 profile-pic'
+                        src='/images/profile-pic.jpg'
                         alt='generic-image-content'
                      />
                   </div>
                   <div className='media-body'>
-                     <h5 className='mt-0'>Post 1</h5>
-                     Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                     metus scelerisque ante sollicitudin. Cras purus odio,
-                     vestibulum in vulputate at, tempus viverra turpis. Fusce
-                     condimentum nunc ac nisi vulputate fringilla. Donec lacinia
-                     congue felis in faucibus.
+                     <h5 className='mt-0'>About the Developer</h5>
+                     Shiv Shankar Prasad
+                     MERN Stack enthusiast
                   </div>
                </div>
             </div>

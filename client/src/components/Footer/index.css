@@ -20,3 +20,12 @@ a:hover {
    padding: 5px;
    text-align: center;
 }
+.facebook-page {
+   width: 70px;
+   height: 70px;
+   padding: 5px;
+}
+
+.contact-us-link {
+   text-align: center;
+}
