@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './home.css';
 import { getPosts } from '../../apis/posts';
 import Posts from '../Posts/posts';
@@ -48,13 +47,12 @@ const Home = () => {
                      <img
                         className='mr-3 profile-pic'
                         src='/images/profile-pic.jpg'
-                        alt='generic-image-content'
+                        alt='generic-content'
                      />
                   </div>
                   <div className='media-body'>
                      <h5 className='mt-0'>About the Developer</h5>
-                     Shiv Shankar Prasad
-                     MERN Stack enthusiast
+                     Shiv Shankar Prasad MERN Stack enthusiast
                   </div>
                </div>
             </div>

@@ -34,7 +34,7 @@ const AdminDashboard = (props) => {
    const handleSubmit = (e) => {
       e.preventDefault();
       console.log('Submit clicled');
-
+      setLoading(true);
       if (isEmpty(title)) {
          setErrorMsg(message.titleRequired);
       } else if (isEmpty(tags)) {
@@ -53,9 +53,9 @@ const AdminDashboard = (props) => {
          });
          createPost(data)
             .then((res) => {
+               setLoading(false);
                setPostData({
                   ...postData,
-                  loading: false,
                   title: '',
                   tags: '',
                   author: '',
@@ -65,6 +65,7 @@ const AdminDashboard = (props) => {
                setSuccessMsg(res.data.successMessage);
             })
             .catch((err) => {
+               setLoading(false);
                setErrorMsg(err.response.data.errorMessage);
                console.log('Post create error', err);
             });

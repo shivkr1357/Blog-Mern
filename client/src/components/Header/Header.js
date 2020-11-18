@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import './header.css';
 import { isAuthenticated, logout } from '../Helpers/auth';
 
-
 const Header = ({ history }) => {
    const handleLogout = (evt) => {
       logout(() => {
@@ -26,8 +25,8 @@ const Header = ({ history }) => {
          </button>
          <div className='brand'>
             <Link to='/' className='navbar-brand'>
-               <img className="logo" src="/images/logo.jpg" alt="Logo" />
-               <i className="logo-text ">ItsIndianGuy</i>
+               <img className='logo' src='/images/logo.jpg' alt='Logo' />
+               <i className='logo-text '>ItsIndianGuy</i>
             </Link>
          </div>
          <div className='collapse navbar-collapse' id='navbarTogglerDemo01'>
@@ -63,11 +62,11 @@ const Header = ({ history }) => {
                            <i className='fas fa-sign-in-alt'></i> SignIn
                         </Link>
                      </li> */}
-                     <li className='nav-item'>
+                     {/* <li className='nav-item'>
                         <Link className='nav-link' to='/posts'>
                            Posts
                         </Link>
-                     </li>
+                     </li> */}
                      <li className='nav-item'>
                         <Link className='nav-link' to='/about'>
                            About

@@ -13,6 +13,7 @@ import AdminRoutes from './components/Admin/AdminRoutes/AdminRoutes';
 import AdminDashboard from './components/Admin/AdminDashboard/Admin';
 import PostDescription from './components/Posts/postdescription';
 import Posts from './components/Posts/allPosts';
+import ContactUs from './components/Contact-Us/Contactus';
 // import UserDashboard from './components/User/UserDashboard/UserDashboard';
 // import UserRoutes from './components/User/UserRoutes/UserRoutes';
 
@@ -29,6 +30,7 @@ function App() {
                <Route exact path='/login' component={Signin} />{' '}
                <Route exact path='/services' component={Services} />{' '}
                <Route exact path='/about' component={About} />{' '}
+               <Route exact path='/contact-us' component={ContactUs} />{' '}
                {/* 
                         {/* <UserRoutes
                            exact

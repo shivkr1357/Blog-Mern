@@ -17,4 +17,7 @@ export const message = {
    tagsRequired: 'Please Enter at least one tag',
    authorRequired: 'Please Enter author name',
    htmlRequired: 'Please Enter Post Description',
+   commentRequired: 'Please Enter Comment',
+   nameRequired: 'Please Enter Your Name',
+   emailRequired: 'Please Enter your email',
 };
